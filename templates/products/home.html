@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load staticfiles %}
 
 {% block jumbotron2 %}
     <div class="container">
@@ -15,19 +15,29 @@
 {%  endblock %}
 
 {% block content %}
-<div class="row">
-        {% for product in products %}
-            <div class="col-sm-4">
-            {% for item in product.productimage_set.all %}
-                {% if item.featured %}
-                <img src="{{ item.image.url }}" width="150" height="150" />
-                {% endif %}
+  <div class="row">
+    {% for product in products %}
+  <div class="col-sm-6 col-md-3">
+    <div class="thumbnail">
+        {% if product.productimage_set.all %}
+                {% for item in product.productimage_set.all %}
+                    {% if item.featured %}
+                    <img class="img-responsive" src="{{ item.image.url }}"  />
+                    {% endif %}
                  {% endfor %}
-                {{ product.id }}
-                {{ product.title }}
-                {{ product.price }}
-         </div>
-         {% cycle "" "" "</div> <br><div class= 'row'>" %}
+        {% else %}
+            <img class="img-responsive" src="{% static 'img/download.svg' %}" width="150" height="150" />
+        {% endif %}
+      <div class="caption">
+         <a href="{{ product.get_absolute_url }}"> <h3>{{ product.title }}</h3></a>
+            <p>{{ product.description }}</p>
+            <p><a href="{{ product.get_absolute_url }}" class="btn btn-primary" role="button">View</a>
+            <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+ {% cycle "" "" "" "</div> <br><div class= 'row'>" %}
         {% endfor %}
-</div>
+  </div>
 {% endblock %}
+

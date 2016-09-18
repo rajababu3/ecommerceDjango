@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ product.title }}</h1>
+    <h1>Featured</h1>
+    {% for img in image %}
+        {% if img.featured %}
+            <img class="img-responsive" src="{{ img.image.url }}"  />
+        {% else %}
+              <div class="col-xs-6 col-md-3">
+                <a href="#" class="thumbnail">
+                <img class="img-responsive" src="{{ img.image.url }}"  />
+                </a>
+            </div>
+    {% endif %}
+    {% endfor %}
+{% endblock %}
