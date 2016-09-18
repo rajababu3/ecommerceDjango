@@ -18,8 +18,16 @@
 <div class="row">
         {% for product in products %}
             <div class="col-sm-4">
-            {{ product.title }}
-             </div>
+            {% for item in product.productimage_set.all %}
+                {% if item.featured %}
+                <img src="{{ item.image.url }}" width="150" height="150" />
+                {% endif %}
+                 {% endfor %}
+                {{ product.id }}
+                {{ product.title }}
+                {{ product.price }}
+         </div>
+         {% cycle "" "" "</div> <br><div class= 'row'>" %}
         {% endfor %}
 </div>
 {% endblock %}
