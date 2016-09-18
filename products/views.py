@@ -5,11 +5,8 @@ from django.shortcuts import render
 from .models import Product
 
 def home(request):
-    if request.user.is_authenticated():
-        username_is = "Raja is using Context"
-        context = {"username_is": request.user}
-    else:
-        context = {"username_is": request.user}
+    products = Product.objects.all()
+    context = {"products": products}
     template = 'products/home.html'
     return render(request, template, context)
 
