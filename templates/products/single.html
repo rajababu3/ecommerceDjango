@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
     <h1>{{ product.title }}</h1>
-    <h1>Featured</h1>
-    {% for img in image %}
+
+    {% for img in images %}
         {% if img.featured %}
+            <h1>Featured</h1>
             <img class="img-responsive" src="{{ img.image.url }}"  />
         {% else %}
               <div class="col-xs-6 col-md-3">
@@ -11,6 +12,6 @@
                 <img class="img-responsive" src="{{ img.image.url }}"  />
                 </a>
             </div>
-    {% endif %}
+        {% endif %}
     {% endfor %}
 {% endblock %}
