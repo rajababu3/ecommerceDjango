@@ -23,7 +23,7 @@
     {% endfor %}
     </div>
     <div class="col-sm-8">
-    <h1>{{ product.title }} <a href="#" class="pull-right">Add to Cart</a> </h1><hr/>
+    <h1>{{ product.title }} <a href="{% url 'update_cart' product.slug %}" class="pull-right">Add to Cart</a> </h1><hr/>
         Price: $ {{ product.price }} <br/>
         Shipping: $25+ Shipping FREE <br>
         <hr/>
