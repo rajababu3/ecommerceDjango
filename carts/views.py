@@ -39,11 +39,17 @@ def update_cart(request, slug):
     if not product in cart.products.all():
         cart.products.add(product)
     else:
-        cart.products.remove(product)
+        if cart.products.all() == 0:
+            "Your Cart is empty"
+        else:
+            cart.products.remove(product)
 
     new_total = 0.00
     for item in cart.products.all():
         new_total += float(item.price)
+
+    request.session['items_total'] = cart.products.count()
+
     cart.total = new_total
     cart.save()
 
