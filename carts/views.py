@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse
 
 # Create your views here.
 from products.models import Product
-from .models import Cart
+from .models import Cart, CartItem
 def view(request):
     try:
         the_id = request.session['cart_id']
@@ -36,19 +36,23 @@ def update_cart(request, slug):
     except:
         pass
 
-    if not product in cart.products.all():
-        cart.products.add(product)
+    cart_item, created = CartItem.objects.get_or_create(product=product)
+    if created:
+        print("Yeah")
+    if not cart_item in cart.items.all():
+        cart.items.add(cart_item)
     else:
-        if cart.products.all() == 0:
+        if cart.items.all() == 0:
             "Your Cart is empty"
         else:
-            cart.products.remove(product)
+            cart.items.remove(cart_item)
 
     new_total = 0.00
-    for item in cart.products.all():
-        new_total += float(item.price)
+    for item in cart.items.all():
+        line_total = float(item.product.price) * item.quantity
+        new_total += line_total
 
-    request.session['items_total'] = cart.products.count()
+    request.session['items_total'] = cart.items.count()
 
     cart.total = new_total
     cart.save()
