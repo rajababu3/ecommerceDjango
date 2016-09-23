@@ -23,9 +23,14 @@
     {% endfor %}
     </div>
     <div class="col-sm-8">
-    <h1>{{ product.title }} <a href="{% url 'update_cart' product.slug %}" class="pull-right">Add to Cart</a> </h1><hr/>
-        Price: $ {{ product.price }} <br/>
-        Shipping: $25+ Shipping FREE <br>
+    <h1>{{ product.title }} <a href="{% url 'update_cart' product.slug %}?qty=12" class="pull-right">Add to Cart</a> </h1><hr/>
+        <form class="form pull-right" method="GET" action="{% url 'update_cart' product.slug %}" >
+            <input name="qty" type="number" value="1"/>
+            <input name="attr" type="text" value=""/>
+            <input type="submit" value="Add to Cart"/>
+        </form>
+        <p>Price: $ {{ product.price }}</p> <br/>
+        <p>Shipping: $25+ Shipping FREE </p><br>
         <hr/>
         {{ product.description |linebreaks }}
     </div>
