@@ -28,7 +28,10 @@
                 {% for item in cart.cartitem_set.all %}
 
                     <tr>
-                        <td>{{ item.product }} {% if item.variations.all %}<ul>{% for subitem in item.variations.all %}<li>{{ subitem.category|capfirst}} : {{ subitem.title|capfirst }}{% endfor %}</li><ul> {% endif %}</td>
+                        <td>{{ item.product }} {% if item.variations.all %}
+                            <ul>{% for subitem in item.variations.all %}
+                                <li>{{ subitem.category|capfirst}} : {{ subitem.title|capfirst }}{% endfor %}</li>
+                                </ul> {% endif %}</td>
                         <td>{{ item.product.price }}</td>
                         <td>{{ item.quantity }}</td>
                         <td></td>
@@ -37,7 +40,8 @@
 
             </table>
 
-
+<br/>
+           <a href="{% url "checkout" %}">Checkout</a>
         {% endif %}
     </div>
 {% endblock %}
