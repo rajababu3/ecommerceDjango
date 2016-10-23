@@ -22,11 +22,12 @@
         {% if product.productimage_set.all %}
                 {% for item in product.productimage_set.all %}
                     {% if item.featured %}
-                    <img class="img-responsive" src="{{ item.image.url }}"  />
+{#                     <img class="img-responsive" src="{% static {{ item.image.url }} %}" width="250" height="236"  />#}
+                    <img class="img-responsive" src="{{ item.image.url }} " style="width:15vw;height:25vh;"/>
                     {% endif %}
                  {% endfor %}
         {% else %}
-            <img class="img-responsive" src="{% static 'img/download.svg' %}" width="150" height="150" />
+            <img class="img-responsive" src="{% static 'img/download.svg' %}" style="width:15vw;height:25vh;" />
         {% endif %}
       <div class="caption">
          <a href="{{ product.get_absolute_url }}"> <h3>{{ product.title }}</h3></a>
