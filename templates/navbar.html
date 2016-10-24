@@ -24,17 +24,9 @@
                     <span class="badge">{{ request.session.items_total }}</span></a></li>
                     {% if user.is_authenticated %}
                          <li><a href="{% url 'products' %}">Hey, {{ request.user.username }}</a></li>
-                     {% else %}
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="{% url 'auth_logout' %}">Logout</a></li>
+                    {% else %}
+                        <li><a href="{% url 'auth_login' %}">Login | Singup</a></li>
                     {% endif %}
             </ul>
         </div><!--/.nav-collapse -->
