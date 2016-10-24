@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from orders.models import Order
-from carts.models import Cart
+from carts.models import CartItem
 
 
 class UserProfile(models.Model):
@@ -16,10 +16,12 @@ class UserProfile(models.Model):
 
 
 class UserOrder(models.Model):
+    user = models.ForeignKey(User)
     order = models.ForeignKey(Order, default=1)
+    cart_items = models.ForeignKey(CartItem, default=1)
 
     def __str__(self):
-        return self.order
+        return str(self.order) + " " + str(self.user)
 
 
 

@@ -41,7 +41,11 @@
             </table>
 
 <br/>
-           <a href="{% url "checkout" %}">Checkout</a>
+            {% if user.is_authenticated %}
+                <a href="{% url "checkout" %}">Checkout</a>
+             {% else %}
+                <a href="{% url "auth_login" %}">Login or Register</a>
+             {% endif %}
         {% endif %}
     </div>
 {% endblock %}

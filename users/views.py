@@ -8,18 +8,18 @@ def logout_view(request):
     return HttpResponseRedirect('/')
 
 def login_view(request):
-
     form = LoginForm(request.POST or None)
     if form.is_valid():
         username = form.cleaned_data['username']
         password = form.cleaned_data['password']
         user = authenticate(username= username, password=password)
         login(request, user)
+        return HttpResponseRedirect("/cart/")
     context = {
         "form": form
     }
-
     return render(request, "forms.html", context)
+
 
 def registration_view(request):
 
