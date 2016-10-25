@@ -3,12 +3,9 @@ import time
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, HttpResponseRedirect
-
-# Create your views here.
-
 from carts.models import Cart
-
 from .models import Order
+from users.forms import UserAddressForm
 
 @login_required()
 def checkout(request):
@@ -28,14 +25,33 @@ def checkout(request):
         new_order.order_id = str(time.time())
         new_order.save()
 
+
     except:
+        new_order = None
         return HttpResponseRedirect(reverse("cart"))
+
+    address_form = UserAddressForm(request.POST or None)
+    if address_form.is_valid():
+        new_address = address_form.save(commit=False)
+        new_address.user = request.user
+        new_address.save()
+
+    if new_order.status == "Started":
+        new_order.status = "Finished"
+        new_order.save()
 
     if new_order.status == "Finished":
         del request.session['cart_id']
         del request.session['items_total']
-        return HttpResponseRedirect(reverse("cart"))
+        return HttpResponseRedirect(reverse("success"))
 
+    context = {
+        "address_form": address_form
+    }
+    template = "orders/success.html"
+    return render(request, template, context)
+
+def success(request):
     context = {}
-    template = "products/home.html"
+    template = "orders/success.html"
     return render(request, template, context)

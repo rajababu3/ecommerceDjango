@@ -1,6 +1,6 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, reverse,Http404
 from django.contrib.auth import login,logout,authenticate
-from .forms import LoginForm, RegistrationForm
+from .forms import LoginForm, RegistrationForm,UserAddressForm
 # Create your views here.
 
 def logout_view(request):
@@ -28,6 +28,7 @@ def registration_view(request):
         print("Valid")
         new_user = form.save(commit=False)
         new_user.save()
+        return HttpResponseRedirect("/users/login")
         # username = form.cleaned_data['username']
         # password = form.cleaned_data['password']
         # user = authenticate(username= username, password=password)
@@ -37,3 +38,16 @@ def registration_view(request):
     }
 
     return render(request, "forms.html", context)
+
+
+def add_user_address(request):
+
+    form = UserAddressForm(request.POST or None)
+    if form.is_valid():
+        new_address = form.save(commit=False)
+        new_address.user = request.user
+        new_address.save()
+    context = {
+        "form": form
+    }
+    return render(request, "orders/shipping.html", context)
