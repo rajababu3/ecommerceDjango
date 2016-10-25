@@ -1,42 +1,47 @@
 from django.shortcuts import render, HttpResponseRedirect, reverse,Http404
 from django.contrib.auth import login,logout,authenticate
 from .forms import LoginForm, RegistrationForm,UserAddressForm
+from django.contrib import messages
 # Create your views here.
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect('/')
+    messages.success(request, "<strong>Successfully Logged out</strong>. Feel free to <a href='%s'>login</a> again." % (
+    reverse("auth_login")), extra_tags='safe, abc')
+    messages.warning(request, "There's a warning.")
+    messages.error(request, "There's an error.")
+    return HttpResponseRedirect('%s' % (reverse("auth_login")))
 
 def login_view(request):
     form = LoginForm(request.POST or None)
+    btn = "Login"
     if form.is_valid():
         username = form.cleaned_data['username']
         password = form.cleaned_data['password']
-        user = authenticate(username= username, password=password)
+        user = authenticate(username=username, password=password)
         login(request, user)
-        return HttpResponseRedirect("/cart/")
+        messages.success(request, "Successfully Logged In. Welcome Back!")
+        return HttpResponseRedirect("/")
     context = {
-        "form": form
+        "form": form,
+        "submit_btn": btn,
     }
     return render(request, "forms.html", context)
 
 
 def registration_view(request):
-
     form = RegistrationForm(request.POST or None)
+    btn = "Join"
     if form.is_valid():
-        print("Valid")
         new_user = form.save(commit=False)
         new_user.save()
-        return HttpResponseRedirect("/users/login")
-        # username = form.cleaned_data['username']
-        # password = form.cleaned_data['password']
-        # user = authenticate(username= username, password=password)
-        # login(request, user)
-    context = {
-        "form": form
-    }
+        messages.success(request, "Successfully Registered.")
+        return HttpResponseRedirect("/")
 
+    context = {
+        "form": form,
+        "submit_btn": btn,
+    }
     return render(request, "forms.html", context)
 
 
