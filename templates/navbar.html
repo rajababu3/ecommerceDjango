@@ -24,7 +24,8 @@
 			<div class="header-bottom bottom-com">
 			<div class="container">
 				<div class="logo">
-					<h1><a href="{% url 'home' %}">E-SHOPPER</a></h1>
+                    <a href="{% url 'home' %}"><img src="{% static 'images/logo (1).png' %}" alt=""></a>
+{#					<h1><a href="{% url 'home' %}">E-SHOPPER</a></h1>#}
 				</div>
 				<div class="top-nav">
 				<!-- start header menu -->
@@ -62,14 +63,18 @@
 						</script>
 
 					<!---->
-					<div class="cart box_1">
-						<a href="checkout.html">
+						<div class="cart box_1">
+                        {% if request.session.items_total %}
+						<a href="{% url 'cart' %}">
 						<h3> <div class="total">
-							<span class="simpleCart_total">$95.00</span> (<span id="simpleCart_quantity" class="simpleCart_quantity">1</span> items)</div>
-							<img src="{% static 'images/cart.png' %}" alt=""></h3>
+                            (<span class="cartSpan">{{ request.session.items_total }}</span> items)
+                            </div>
+							<img src="{% static 'images/cart.png' %}" alt=""/></h3>
 						</a>
+                        {% else %}
 						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 						<div class="clearfix"> </div>
+                        {% endif %}
 					</div>
 
 					<!---->

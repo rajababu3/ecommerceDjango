@@ -3,7 +3,6 @@
 	<div class="header-top">
 		<div class="container">
 			<div class="header-top-in">
-
 				<ul class="support">
 					<li ><a href="mailto:info@example.com" ><i > </i>info@eshopper.com</a></li>
 					<li ><span ><i class="tele-in"> </i>+91 9852954321</span></li>
@@ -61,13 +60,17 @@
 
 					<!---->
 					<div class="cart box_1">
-						<a href="checkout.html">
+                        {% if request.session.items_total %}
+						<a href="{% url 'cart' %}">
 						<h3> <div class="total">
-							<span class="simpleCart_total">{{ request.session.items_total }}</span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
+                            (<span class="cartSpan">{{ request.session.items_total }}</span> items)
+                            </div>
 							<img src="{% static 'images/cart.png' %}" alt=""/></h3>
 						</a>
+                        {% else %}
 						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 						<div class="clearfix"> </div>
+                        {% endif %}
 					</div>
 
 <div class="clearfix"> </div>

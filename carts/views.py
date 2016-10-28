@@ -37,7 +37,6 @@ def remove_from_cart(request, id):
 
 def add_to_cart(request, slug):
     request.session.set_expiry(120000)
-
     try:
         the_id = request.session['cart_id']
     except:
@@ -78,6 +77,7 @@ def add_to_cart(request, slug):
         request.session['items_total'] = cart.cartitem_set.count()
         cart.total = new_total
         cart.save()
+        request.session['cart_total'] = Cart.objects.get(cart_total = cart.total)
         return HttpResponseRedirect(reverse("cart"))
 
     return HttpResponseRedirect(reverse("cart"))

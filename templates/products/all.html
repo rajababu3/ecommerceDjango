@@ -4,13 +4,13 @@
 {% load staticfiles %}
 
 {% block head_title %}
-Products ||
+    Products ||
 {% endblock %}
 
 {% block styles %}
-.jumbotron {
-	/*color: red;*/
-}
+    .jumbotron {
+    /*color: red;*/
+    }
 {% endblock %}
 
 
@@ -18,61 +18,189 @@ Products ||
 
 {% block navbarHome %}
 
-{% include 'navbar.html' %}
+    {% include 'navbar.html' %}
 {% endblock %}
+{#{% block content %}#}
+{##}
+{##}
+{##}
+{#<div class='row'>#}
+{##}
+{#{% for product in products %}#}
+{#		<div class='col-sm-2'>#}
+{#			<div class="thumbnail">#}
+{#					{% if product.productimage_set.all %}#}
+{##}
+{#							{% for item in product.productimage_set.all %}#}
+{##}
+{#							{% if item.featured %}#}
+{#							<div style="width:100px;margin:0 auto;">#}
+{##}
+{#								<a href='{{ product.get_absolute_url }}'>#}
+{#									<div class='background_img_thumb' style="height:100px;#}
+{#                                            background-image: url('{{ item.image.url }}');"></div>#}
+{#								</a>#}
+{#							</div>#}
+{#							<!-- <img class='img-responsive' src="{{ MEDIA_URL }}{{ item.image }}" /> -->#}
+{#							{% endif %}#}
+{##}
+{##}
+{##}
+{#							{% endfor %}#}
+{##}
+{#					{% else %}#}
+{#					<div style="width:100px;margin:0 auto;">#}
+{##}
+{#								<a href='{{ product.get_absolute_url }}'>#}
+{#									<div class='background_img_thumb' style="height:100px;"></div>#}
+{#								</a>#}
+{#							</div>#}
+{#					{% endif %}#}
+{##}
+{#					<div class="caption">#}
+{#					<a href='{{ product.get_absolute_url }}'> <h3>{{ product.title }}</h3></a>#}
+{#					<p>{{ product.description|truncatewords:15}}</p>#}
+{#					<p><a href="{{ product.get_absolute_url }}" class="btn btn-primary" role="button">View</a> <a href="#" class="btn btn-default" role="button">Button</a></p>#}
+{#					</div>#}
+{#		   	 </div>#}
+{##}
+{##}
+{#		</div>#}
+{##}
+{#{% cycle "" "" "" "" "" "</div><br/><hr/><div class='row'>" %}#}
+{#{% endfor %}#}
+{##}
+{#</div>#}
+{#{% include 'footer.html' %}#}
+{#{% endblock %}#}
+
+
+
+
 {% block content %}
+    <div class="container">
+        <h6 class="dress"><a href="{% url 'home' %}">Home</a> <i> </i> Products </h6>
+    </div>
+    <div class="back">
+        <h2>PRODUCTS</h2>
+    </div>
+    <!---->
+{#    //Products#}
+    <div class="product">
+        <div class="container">
+                <div class="product-right-top">
+                <div class="top-product">
+                        <div class="col-sm-3 chain-grid  simpleCart_shelfItem" style="width: 250px; height: 400px;">
+                        {% for product in products %}
+                                <div class="grid-span-1">
+                                    {% if product.productimage_set.all %}
+                                        {% for item in product.productimage_set.all %}
+                                            {% if item.featured %}
+                                                <a  href="{{ product.get_absolute_url }}">
+                                                    <img class="img-responsive " src="{{ item.image.url }}" alt=" " \
+                                                         style="height: 400px; width: 200px; border: Highlight; border-radius: 10%;">
+                                                    <div class="link">
+                                                        <ul >
+                                                            <li><i> </i></li>
+                                                            <li><i class="white1"> </i></li>
+
+                                                        </ul>
+                                                    </div>
+                                                </a>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                            </div>
+                                <div class="grid-chain-bottom ">
+                                    <h6><a href="{{ product.get_absolute_url }}">{{ product.title }}</a></h6>
+                                    <div class="star-price">
+                                        <div class="price-at">
+                                            <ul class="star-footer">
+                                                <li><a href="#"><i> </i></a></li>
+                                                <li><a href="#"><i> </i></a></li>
+                                                <li><a href="#"><i> </i></a></li>
+                                                <li><a href="#"><i> </i></a></li>
+                                                <li><a href="#"><i> </i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="price-at-bottom ">
+                                            <span class="item_price">{{ product.price }}</span>
+                                        </div>
+                                        <div class="clearfix"> </div>
+                                    </div>
+                                    <div class="cart-add">
+                                        <a class="add1 item_add"  href="{{ product.get_absolute_url }}">VIEW PRODUCT <i> </i></a>
+                                        <a class="add2" href="#"><i> </i></a>
+
+                                        <div class="clearfix"> </div>
+                                    </div>
+                                </div>
+                            {% cycle " "  "</div><div class='col-sm-3 chain-grid  simpleCart_shelfItem'>" %}
+                    {% endfor %}
+                </div>
+                </div>
+             </div>
 
 
+            {#                        //End of Product 1 #}
+        <hr/>
+            <div class="clearfix"> </div>
+            <div class="shipping">
+                <div class="col-md-3 col-md1">
+                    <div class=" phone">
 
-<div class='row'>
+                        <div class="num">
+                            <span>8(802)234-5678</span>
+                            <p>Monday - Saturday: 8am - 5pm PST</p>
+                        </div>
+                        <i class="phone-in"> </i>
+                        <div class="clearfix"> </div>
+                    </div>
 
-{% for product in products %}
-		<div class='col-sm-2'>
+                </div>
+                <div class="col-md-5 col-md2">
+                    <div class=" phone1">
 
+                        <i class="phone-in1"> </i>
+                        <div class="num1">
+                            <span>Free Shipping</span>
+                            <p>on all orders over $99</p>
+                        </div>
+                        <a class="learn-in" href="single.html">Learn More</a>
+                        <div class="clearfix"> </div>
+                    </div>
 
-
-			<div class="thumbnail">
-					{% if product.productimage_set.all %}
-
-							{% for item in product.productimage_set.all %}
-
-							{% if item.featured %}
-							<div style="width:100px;margin:0 auto;">
-
-								<a href='{{ product.get_absolute_url }}'>
-									<div class='background_img_thumb' style="height:100px;
-                                            background-image: url('{{ item.image.url }}');"></div>
-								</a>
-							</div>
-							<!-- <img class='img-responsive' src="{{ MEDIA_URL }}{{ item.image }}" /> -->
-							{% endif %}
-
-
-
-							{% endfor %}
-
-					{% else %}
-					<div style="width:100px;margin:0 auto;">
-
-								<a href='{{ product.get_absolute_url }}'>
-									<div class='background_img_thumb' style="height:100px;"></div>
-								</a>
-							</div>
-					{% endif %}
-
-					<div class="caption">
-					<a href='{{ product.get_absolute_url }}'> <h3>{{ product.title }}</h3></a>
-					<p>{{ product.description|truncatewords:15}}</p>
-					<p><a href="{{ product.get_absolute_url }}" class="btn btn-primary" role="button">View</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-					</div>
-		   	 </div>
+                </div>
+                <div class="col-md-4 col-md3">
+                    <div class=" phone2">
 
 
-		</div>
+                        <div class="num2">
+                            <span>Crazy Sale!</span>
+                            <p>on selected items</p>
+                        </div>
+                        <a class="learn-in1" href="single.html">Learn More</a>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
 
-{% cycle "" "" "" "" "" "</div><br/><hr/><div class='row'>" %}
-{% endfor %}
+        </div>
 
-</div>
-{% include 'footer.html' %}
+        <!---->
+
+    </div>
+    <div class="bottom-grid1">
+
+        <div class="fit1">
+            <h3>HAPPY SHOPPING</h3>
+            <p>Lorem Ipsum sit amet consectuer adipiscing elitsed diam nonummy nibh euismod</p>
+        </div>
+    </div>
+
+    <script src="{% static 'js/simpleCart.min.js' %}"> </script>
+{% endblock %}
+{% block footer %}
+    {% include 'footer.html' %}
 {% endblock %}
