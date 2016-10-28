@@ -2,112 +2,527 @@
 {% load staticfiles %}
 
 {% block head_title %}
-Welcome to
+    Welcome to
 {% endblock %}
 
 {% block styles %}
-.jumbotron {
-	/*color: red;*/
-}
+    .jumbotron {
+    /*color: red;*/
+    }
 {% endblock %}
 
 {% block jquery %}
-//alert("welcome!");
+    //alert("welcome!");
 {% endblock%}
 
-{% block jumbotron %}
-
-  <div class='container' style='margin-top: -19px;margin-bottom: 19px;'>
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-          <!-- Indicators -->
-          <ol class="carousel-indicators">
-            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-          </ol>
-
-          <!-- Wrapper for slides -->
-          <div class="carousel-inner" role="listbox">
-            <div class="item active">
-              <img src="http://ginva.com/wp-content/uploads/2012/03/jquery-content-and-image-slider-1.jpg" alt="...">
-              <div class="carousel-caption">
-              <h1>Hello There</h1>
-                <p>Hello World</p>
-              </div>
+{% block navbarHome %}
+    {% include 'navHome.html' %}
+{% endblock %}
+{% block content %}
+    <div class="content">
+        <div class="container">
+            <div class="content-top">
+                <div class="col-md-9">
+                    <div class="col-top">
+                        <div class="col-md-6 black">
+                            <a href="single.html"><div class="shoe" >
+                                <h3>WOMEN SHOES</h3>
+                            </div>
+                                <img src="images/sh.png" alt="" ></a>
+                        </div>
+                        <div class="col-md-6 black-in">
+                            <a href="single.html"><div class="shoe bag" >
+                                <h3>WOMEN BAGS</h3>
+                            </div>
+                                <img src="images/ba.png" alt="" ></a>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="col-top-bottom">
+                        <h3 class="menber">MEMBER DISCOUNT</h3>
+                        <a href="single.html" class="now-in">SHOP NOW</a>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+                <div class="col-md-3 per">
+                    <a href="single.html"><img class="img-responsive" src="images/pi1.jpg" alt="" >
+                        <div class="six">
+                            <h4>FASHION</h4>
+                            <p>Get up to</p>
+                            <span>60%</span>
+                        </div></a>
+                </div>
+                <div class="clearfix"> </div>
             </div>
-            <div class="item">
-              <img src="http://www.inspirefirst.com/wp-content/uploads/2012/04/113.jpg" alt="...">
-              <div class="carousel-caption">
-              <h1>Hello There</h1>
-                <p>Hello World</p>
-              </div>
+            <!---->
+            <div class="sap_tabs">
+                <label class="line"> </label>
+                <h2>LATES ARRIVAL</h2>
+                <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+                    <ul class="resp-tabs-list">
+                        <li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>WOMENS</span></li>
+                        <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>MENS</span></li>
+                        <li class="resp-tab-item" aria-controls="tab_item-2" role="tab"><span>SHOES</span></li>
+                        <div class="clearfix"></div>
+                    </ul>
+                    <div class="resp-tabs-container">
+                        <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+                            <div class="tab_img">
+                                <div class="img-top simpleCart_shelfItem">
+
+                                    <img src="images/pi2.jpg" class="img-responsive" alt=""/>
+
+                                    <div class="tab_desc">
+                                        <ul class="round-top">
+                                            <li><a href="#"><i> </i></a></li>
+                                            <li><a href="#"><i class="round"> </i></a></li>
+                                        </ul>
+
+                                        <div class="agency ">
+                                            <div class="agency-left">
+                                                <h6 class="jean">BAJU JEANS</h6>
+                                                <span class="dollor item_price">$50.00</span>
+                                                <div class="clearfix"> </div>
+                                            </div>
+                                            <div class="agency-right">
+                                                <ul class="social">
+                                                    <li><a href="#"><i class="item_add"> </i></a></li>
+                                                    <li><a href="#"><i class="text"> </i></a></li>
+                                                </ul>
+                                                <ul class="social-in">
+                                                    <li><a href="#"><i> </i></a></li>
+                                                    <li><a href="#"><i > </i></a></li>
+                                                    <li><a href="#"><i> </i></a></li>
+                                                    <li><a href="#"><i > </i></a></li>
+                                                    <li><a href="#"><i > </i></a></li>
+                                                </ul>
+                                                <div class="clearfix"> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="img-top simpleCart_shelfItem">
+
+                                    <img src="images/pi3.jpg" class="img-responsive" alt=""/>
+                                    <div class="tab_desc">
+                                        <ul class="round-top">
+                                            <li><a href="#"><i> </i></a></li>
+                                            <li><a href="#"><i class="round"> </i></a></li>
+                                        </ul>
+
+                                        <div class="agency ">
+                                            <div class="agency-left">
+                                                <h6 class="jean">BAJU JEANS</h6>
+                                                <span class="dollor item_price">$50.00</span>
+                                                <div class="clearfix"> </div>
+                                            </div>
+                                            <div class="agency-right">
+                                                <ul class="social">
+                                                    <li><a href="#"><i class="item_add"> </i></a></li>
+                                                    <li><a href="#"><i class="text"> </i></a></li>
+                                                </ul>
+                                                <ul class="social-in">
+                                                    <li><a href="#"><i> </i></a></li>
+                                                    <li><a href="#"><i > </i></a></li>
+                                                    <li><a href="#"><i> </i></a></li>
+                                                    <li><a href="#"><i > </i></a></li>
+                                                    <li><a href="#"><i > </i></a></li>
+                                                </ul>
+                                                <div class="clearfix"> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-in">
+                                        <p>NEW</p>
+                                    </div>
+                                </div>
+                                <div class="img-top simpleCart_shelfItem">
+
+                                    <img src="images/pi4.jpg" class="img-responsive" alt=""/>
+                                    <div class="tab_desc">
+                                        <ul class="round-top">
+                                            <li><a href="#"><i> </i></a></li>
+                                            <li><a href="#"><i class="round"> </i></a></li>
+                                        </ul>
+
+                                        <div class="agency ">
+                                            <div class="agency-left">
+                                                <h6 class="jean">BAJU JEANS</h6>
+                                                <span class="dollor item_price">$50.00</span>
+                                                <div class="clearfix"> </div>
+                                            </div>
+                                            <div class="agency-right">
+                                                <ul class="social">
+                                                    <li><a href="#"><i class="item_add"> </i></a></li>
+                                                    <li><a href="#"><i class="text"> </i></a></li>
+                                                </ul>
+                                                <ul class="social-in">
+                                                    <li><a href="#"><i> </i></a></li>
+                                                    <li><a href="#"><i > </i></a></li>
+                                                    <li><a href="#"><i> </i></a></li>
+                                                    <li><a href="#"><i > </i></a></li>
+                                                    <li><a href="#"><i > </i></a></li>
+                                                </ul>
+                                                <div class="clearfix"> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-in col-in-1">
+                                        <p>SALE <span>30%</span></p>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                        </div>
+                        <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
+                            <div class="tab_img">
+                                <div class="img-top simpleCart_shelfItem">
+
+                                    <img src="images/pi9.jpg" class="img-responsive" alt=""/>
+
+                                    <div class="tab_desc">
+                                        <ul class="round-top">
+                                            <li><a href="#"><i> </i></a></li>
+                                            <li><a href="#"><i class="round"> </i></a></li>
+                                        </ul>
+
+                                        <div class="agency ">
+                                            <div class="agency-left">
+                                                <h6 class="jean">BAJU JEANS</h6>
+                                                <span class="dollor item_price">$50.00</span>
+                                                <div class="clearfix"> </div>
+                                            </div>
+                                            <div class="agency-right">
+                                                <ul class="social">
+                                                    <li><a href="#"><i class="item_add"> </i></a></li>
+                                                    <li><a href="#"><i class="text"> </i></a></li>
+                                                </ul>
+                                                <ul class="social-in">
+                                                    <li><a href="#"><i> </i></a></li>
+                                                    <li><a href="#"><i > </i></a></li>
+                                                    <li><a href="#"><i> </i></a></li>
+                                                    <li><a href="#"><i > </i></a></li>
+                                                    <li><a href="#"><i > </i></a></li>
+                                                </ul>
+                                                <div class="clearfix"> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="img-top simpleCart_shelfItem">
+
+                                    <img src="images/pi8.jpg" class="img-responsive" alt=""/>
+                                    <div class="tab_desc">
+                                        <ul class="round-top">
+                                            <li><a href="#"><i> </i></a></li>
+                                            <li><a href="#"><i class="round"> </i></a></li>
+                                        </ul>
+
+                                        <div class="agency ">
+                                            <div class="agency-left">
+                                                <h6 class="jean">BAJU JEANS</h6>
+                                                <span class="dollor item_price">$50.00</span>
+                                                <div class="clearfix"> </div>
+                                            </div>
+                                            <div class="agency-right">
+                                                <ul class="social">
+                                                    <li><a href="#"><i class="item_add"> </i></a></li>
+                                                    <li><a href="#"><i class="text"> </i></a></li>
+                                                </ul>
+                                                <ul class="social-in">
+                                                    <li><a href="#"><i> </i></a></li>
+                                                    <li><a href="#"><i > </i></a></li>
+                                                    <li><a href="#"><i> </i></a></li>
+                                                    <li><a href="#"><i > </i></a></li>
+                                                    <li><a href="#"><i > </i></a></li>
+                                                </ul>
+                                                <div class="clearfix"> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-in">
+                                        <p>NEW</p>
+                                    </div>
+                                </div>
+                                <div class="img-top simpleCart_shelfItem">
+
+                                    <img src="images/pi10.jpg" class="img-responsive" alt=""/>
+                                    <div class="tab_desc">
+                                        <ul class="round-top">
+                                            <li><a href="#"><i> </i></a></li>
+                                            <li><a href="#"><i class="round"> </i></a></li>
+                                        </ul>
+                                        <div class="agency ">
+                                            <div class="agency-left">
+                                                <h6 class="jean">BAJU JEANS</h6>
+                                                <span class="dollor item_price">$50.00</span>
+                                                <div class="clearfix"> </div>
+                                            </div>
+                                            <div class="agency-right">
+                                                <ul class="social">
+                                                    <li><a href="#"><i class="item_add"> </i></a></li>
+                                                    <li><a href="#"><i class="text"> </i></a></li>
+                                                </ul>
+                                                <ul class="social-in">
+                                                    <li><a href="#"><i> </i></a></li>
+                                                    <li><a href="#"><i > </i></a></li>
+                                                    <li><a href="#"><i> </i></a></li>
+                                                    <li><a href="#"><i > </i></a></li>
+                                                    <li><a href="#"><i > </i></a></li>
+                                                </ul>
+                                                <div class="clearfix"> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-in col-in-1">
+                                        <p>SALE <span>30%</span></p>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                        </div>
+                        <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
+                            <div class="tab_img">
+                                <div class="img-top simpleCart_shelfItem">
+
+                                    <img src="images/pi5.jpg" class="img-responsive" alt=""/>
+
+                                    <div class="tab_desc">
+                                        <ul class="round-top">
+                                            <li><a href="#"><i> </i></a></li>
+                                            <li><a href="#"><i class="round"> </i></a></li>
+                                        </ul>
+
+                                        <div class="agency ">
+                                            <div class="agency-left">
+                                                <h6 class="jean">BAJU JEANS</h6>
+                                                <span class="dollor item_price">$50.00</span>
+                                                <div class="clearfix"> </div>
+                                            </div>
+                                            <div class="agency-right">
+                                                <ul class="social">
+                                                    <li><a href="#"><i class="item_add"> </i></a></li>
+                                                    <li><a href="#"><i class="text"> </i></a></li>
+                                                </ul>
+                                                <ul class="social-in">
+                                                    <li><a href="#"><i> </i></a></li>
+                                                    <li><a href="#"><i > </i></a></li>
+                                                    <li><a href="#"><i> </i></a></li>
+                                                    <li><a href="#"><i > </i></a></li>
+                                                    <li><a href="#"><i > </i></a></li>
+                                                </ul>
+                                                <div class="clearfix"> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="img-top simpleCart_shelfItem">
+
+                                    <img src="images/pi6.jpg" class="img-responsive" alt=""/>
+                                    <div class="tab_desc">
+                                        <ul class="round-top">
+                                            <li><a href="#"><i> </i></a></li>
+                                            <li><a href="#"><i class="round"> </i></a></li>
+                                        </ul>
+
+                                        <div class="agency ">
+                                            <div class="agency-left">
+                                                <h6 class="jean">BAJU JEANS</h6>
+                                                <span class="dollor item_price">$50.00</span>
+                                                <div class="clearfix"> </div>
+                                            </div>
+                                            <div class="agency-right">
+                                                <ul class="social">
+                                                    <li><a href="#"><i class="item_add"> </i></a></li>
+                                                    <li><a href="#"><i class="text"> </i></a></li>
+                                                </ul>
+                                                <ul class="social-in">
+                                                    <li><a href="#"><i> </i></a></li>
+                                                    <li><a href="#"><i > </i></a></li>
+                                                    <li><a href="#"><i> </i></a></li>
+                                                    <li><a href="#"><i > </i></a></li>
+                                                    <li><a href="#"><i > </i></a></li>
+                                                </ul>
+                                                <div class="clearfix"> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-in">
+                                        <p>NEW</p>
+                                    </div>
+                                </div>
+                                <div class="img-top simpleCart_shelfItem">
+
+                                    <img src="images/pi7.jpg" class="img-responsive" alt=""/>
+                                    <div class="tab_desc">
+                                        <ul class="round-top">
+                                            <li><a href="#"><i> </i></a></li>
+                                            <li><a href="#"><i class="round"> </i></a></li>
+                                        </ul>
+
+                                        <div class="agency ">
+                                            <div class="agency-left">
+                                                <h6 class="jean">BAJU JEANS</h6>
+                                                <span class="dollor item_price">$50.00</span>
+                                                <div class="clearfix"> </div>
+                                            </div>
+                                            <div class="agency-right">
+                                                <ul class="social">
+                                                    <li><a href="#"><i class="item_add"> </i></a></li>
+                                                    <li><a href="#"><i class="text"> </i></a></li>
+                                                </ul>
+                                                <ul class="social-in">
+                                                    <li><a href="#"><i> </i></a></li>
+                                                    <li><a href="#"><i > </i></a></li>
+                                                    <li><a href="#"><i> </i></a></li>
+                                                    <li><a href="#"><i > </i></a></li>
+                                                    <li><a href="#"><i > </i></a></li>
+                                                </ul>
+                                                <div class="clearfix"> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-in col-in-1">
+                                        <p>SALE <span>30%</span></p>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
-
-          </div>
-
-          <!-- Controls -->
-          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <span class="sr-only">Next</span>
-          </a>
+            <!---->
         </div>
-
+        <!---->
+        <div class="content-bottom">
+            <div class="container">
+                <p>Design is a funny word. Some people think
+                    design means how it looks. But of course, if you dig deeper
+                    it’s really how it works.</p>
+                <label class="line1"> </label>
+                <span>Steve Jobs</span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="bottom-grid">
+                <img class="img-responsive" src="images/back1.jpg" alt="">
+                <div class="fit">
+                    <h6>Best fit for women’s feet</h6>
+                    <p>TRY TO WALK IN OUR SHOES</p>
+                </div>
+            </div>
+        </div>
+        {% include 'footer.html' %}
+        <!---->
     </div>
 {% endblock %}
 
-{% block content %}
 
 
 
-<hr/>
-<div class='row'>
-
-{% for product in products %}
-		<div class='col-sm-4'>
 
 
 
-			<div class="thumbnail">
-					{% if product.productimage_set.all %}
-
-							{% for item in product.productimage_set.all %}
-
-							{% if item.featured %}
-							<div style="
-							width:200px;
-							height:200px;margin:0 auto;">
-
-								<a href='{{ product.get_absolute_url }}'>
-									<div class='background_img_thumb' style="height:200px;background-image: url('{{ item.image.url }}');"></div>
-								</a>
-							</div>
-							<!-- <img class='img-responsive' src="{{ MEDIA_URL }}{{ item.image }}" /> -->
-							{% endif %}
 
 
 
-							{% endfor %}
-
-					{% else %}
-					<img class='img-responsive' src='{% static "img/download.svg" %}' />
-					{% endif %}
-
-					<div class="caption">
-					<a href='{{ product.get_absolute_url }}'> <h3>{{ product.title }}</h3></a>
-					<p>{{ product.description|truncatewords:15}}</p>
-					<p><a href="{{ product.get_absolute_url }}" class="btn btn-primary" role="button">View</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-					</div>
-		   	 </div>
 
 
-		</div>
 
-{% cycle "" "" "</div><br/><hr/><div class='row'>" %}
-{% endfor %}
 
-</div>
 
-{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#{% extends "base.html" %}#}
+{#{% load staticfiles %}#}
+{##}
+{#{% block head_title %}#}
+{#Welcome to#}
+{#{% endblock %}#}
+{##}
+{#{% block jquery %}#}
+{#//alert("welcome!");#}
+{#{% endblock%}#}
+{##}
+{##}
+{#{% block content %}#}
+{##}
+{##}
+{##}
+{#<hr/>#}
+{#<div class='row'>#}
+{##}
+{#{% for product in products %}#}
+{#		<div class='col-sm-4'>#}
+{##}
+{##}
+{##}
+{#			<div class="thumbnail">#}
+{#					{% if product.productimage_set.all %}#}
+{##}
+{#							{% for item in product.productimage_set.all %}#}
+{##}
+{#							{% if item.featured %}#}
+{#							<div style="#}
+{#							width:200px;#}
+{#							height:200px;margin:0 auto;">#}
+{##}
+{#								<a href='{{ product.get_absolute_url }}'>#}
+{#									<div class='background_img_thumb' style="height:200px;background-image: url('{{ item.image.url }}');"></div>#}
+{#								</a>#}
+{#							</div>#}
+{#							<!-- <img class='img-responsive' src="{{ MEDIA_URL }}{{ item.image }}" /> -->#}
+{#							{% endif %}#}
+{##}
+{##}
+{##}
+{#							{% endfor %}#}
+{##}
+{#					{% else %}#}
+{#					<img class='img-responsive' src='{% static "img/download.svg" %}' />#}
+{#					{% endif %}#}
+{##}
+{#					<div class="caption">#}
+{#					<a href='{{ product.get_absolute_url }}'> <h3>{{ product.title }}</h3></a>#}
+{#					<p>{{ product.description|truncatewords:15}}</p>#}
+{#					<p><a href="{{ product.get_absolute_url }}" class="btn btn-primary" role="button">View</a> <a href="#" class="btn btn-default" role="button">Button</a></p>#}
+{#					</div>#}
+{#		   	 </div>#}
+{##}
+{##}
+{#		</div>#}
+{##}
+{#{% cycle "" "" "</div><br/><hr/><div class='row'>" %}#}
+{#{% endfor %}#}
+{##}
+{#</div>#}
+{##}
+{#{% endblock %}#}
+{##}

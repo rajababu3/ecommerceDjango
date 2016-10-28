@@ -1,13 +1,14 @@
 {% load staticfiles %}
-<div class=" header-product">
-	<div class="header-top com">
+<div class="header">
+	<div class="header-top">
 		<div class="container">
-			<div class="header-top-in grid-1">
+			<div class="header-top-in">
+
 				<ul class="support">
 					<li ><a href="mailto:info@example.com" ><i > </i>info@eshopper.com</a></li>
 					<li ><span ><i class="tele-in"> </i>+91 9852954321</span></li>
 				</ul>
-				{% if user.is_authenticated %}
+                {% if user.is_authenticated %}
 				<ul class=" support-right">
 					<li ><a href="{% url 'products' %}">Hey, {{ request.user.username }}</a></li>
 					<li ><a href="{% url 'auth_logout' %}">Logout</a></li>
@@ -21,31 +22,28 @@
 				<div class="clearfix"> </div>
 			</div>
 			</div>
-			<div class="header-bottom bottom-com">
+			<div class="header-bottom">
 			<div class="container">
 				<div class="logo">
 					<h1><a href="{% url 'home' %}">E-SHOPPER</a></h1>
 				</div>
 				<div class="top-nav">
 				<!-- start header menu -->
-		<ul class="megamenu skyblue menu-in">
-            <li class="showhide" style="overflow: hidden; display: none;">
-                <span class="title">MENU</span><span class="icon1"></span>
-                <span class="icon2"></span>
-            </li>
-		<li style="display: inline-block; overflow: hidden;"><a href="{% url 'home' %}">Home</a></li>
-				<li style="display: inline-block; overflow: hidden;"><a href="#">Products</a> </li>
+		<ul class="megamenu skyblue">
+			<li><a  href="{% url 'home' %}">Home</a></li>
+				<li><a  href="{% url 'products' %}">Products</a></li>
+				<li><a  href="contact.html">Contact</a>
 
-				<li style="display: inline-block; overflow: hidden;"><a href="contact.html">Contact</a>	</li>
+				</li>
 		 </ul>
 		 <!---->
-		 <div class="search-in">
-			<div class="search" style="display: none;">
+		 <div class="search-in" >
+			<div class="search" >
 						<form action="{% url 'search' %}">
 							<input type="text" name="q" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'q';}" class="text">
 							<input type="submit" value="SEARCH">
 						</form>
-							<div class="close-in"><img src="{% static 'images/close.png' %}" alt=""></div>
+							<div class="close-in"><img src="{% static 'images/close.png' %}" alt="" /></div>
 					</div>
 						<div class="right"><button> </button></div>
 				</div>
@@ -65,18 +63,23 @@
 					<div class="cart box_1">
 						<a href="checkout.html">
 						<h3> <div class="total">
-							<span class="simpleCart_total">$95.00</span> (<span id="simpleCart_quantity" class="simpleCart_quantity">1</span> items)</div>
-							<img src="{% static 'images/cart.png' %}" alt=""></h3>
+							<span class="simpleCart_total">{{ request.session.items_total }}</span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
+							<img src="{% static 'images/cart.png' %}" alt=""/></h3>
 						</a>
 						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 						<div class="clearfix"> </div>
 					</div>
 
+<div class="clearfix"> </div>
 					<!---->
 				</div>
-				<div class="clearfix"> </div>
+
 			</div>
+			<div class="clearfix"> </div>
 		</div>
 		</div>
 
-	</div>
+{% include 'banner.html' %}
+
+</div>
+<!---->

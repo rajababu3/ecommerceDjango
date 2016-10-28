@@ -16,9 +16,11 @@ Products ||
 
 {# Comments here #}
 
+{% block navbarHome %}
 
+{% include 'navbar.html' %}
+{% endblock %}
 {% block content %}
-
 
 
 
@@ -72,5 +74,5 @@ Products ||
 {% endfor %}
 
 </div>
-
+{% include 'footer.html' %}
 {% endblock %}

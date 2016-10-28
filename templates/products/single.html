@@ -24,14 +24,15 @@
     </div>
 <div class='col-sm-8'>
 		<div class='col-sm-8 pull-left'>
-			 <h1>{{ product.title }}
-			 </h1>
+{#			 <h1>{{ product.title }}#}
+{#			 </h1>#}
+            <h1 class="_3eAQiD"><!-- react-text: 29674 -->{{ product.title }}<!-- /react-text --></h1>
 		 </div>
 		 <div class='col-sm-4 pull-right'>
 			 	 <form class='form' method='POST' action='{% url "add_to_cart" product.slug %}'>
                  {% csrf_token %}
-			 	 <input class='btn btn-submit btn-block' type='submit' value='Add to cart'/>
-			 	<input  class="form-control"  name='qty' type='number' value='1'/>
+                     <input class='btn btn-submit btn-block' type='submit' value='Add to cart'/>
+			 	     <input  class="form-control"  name='qty' type='number' value='1'/>
 
                 {% if product.variation_set.all %}
                     {% if product.variation_set.sizes %}
@@ -54,8 +55,11 @@
 	 	</div>
 	 	<div class='col-sm-12'>
 			 <hr/>
+            <div class="price costprice">
+                ₹ {{ product.price }}
+            </div>
+			  <br/>
 
-			 Price: {{ product.price }} <br/>
 			 Shipping: Free with $25+ purchase.
 			 <hr/>
 	 	</div>
@@ -63,6 +67,4 @@
 			{{ product.description|linebreaks }}
              </div>
 	</div>
-</div>
-{#https://www.jetbrains.com/shop/eform/students#}
 {% endblock %}
