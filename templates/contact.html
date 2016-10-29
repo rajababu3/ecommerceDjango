@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block navbarHome %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+			<div class="contact">
+
+				<div class=" contact-top-in">
+					<h3>Info</h3>
+					<div class="map">
+{#						<iframe src="https://www.google.com/maps/embed?pb=!3m1!4b1!4m5!3m4!1s0x3bae3fa7243af9c3:0x9bed6669a38d1c3!8m2!3d12.9021902!4d77.518582"></iframe>#}
+                        <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script>
+                        <div style='overflow:hidden;height:350px;width:auto'>
+                            <div id='gmap_canvas' style='height:350px;width:auto;'></div>
+                            <div><small>
+                                <a href="http://embedgooglemaps.com">embed google maps</a></small></div>
+                            <div><small><a href="https://freedirectorysubmissionsites.com/">free</a>
+                            </small></div>
+                            <style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div>
+                        <script type='text/javascript'>function init_map(){var myOptions = {zoom:10,center:new google.maps.LatLng(12.9015548,77.51701400000002),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(12.9015548,77.51701400000002)});infowindow = new google.maps.InfoWindow({content:'<strong>E-SHOPPER</strong><br>RNIST, Bangalore<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+{#                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37494223.23909492!2d103!3d55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x453c569a896724fb%3A0x1409fdf86611f613!2sRussia!5e0!3m2!1sen!2sin!4v1415776049771"></iframe>#}
+					</div>
+
+					<p>We are E-SHOPPER, Your one stop online shopping store. If you are facing any problem
+                        you can contact us through below form or <b> You can reach us with above map location</b>
+                        We are very sorry, You found some problem with us.
+                    </p>
+				</div>
+				<div class=" contact-top">
+					<h3>Have Problem, Contact Us</h3>
+                    <form method='POST' action=''>{% csrf_token %}
+						<div>
+							<span>Your Name </span>
+							<input id="id_name" maxlength="120" name="name" type="text" required />
+						</div>
+						<div>
+							<span>Your Email </span>
+							<input id="id_email" maxlength="254" name="email" type="text" required />
+						</div>
+						<div>
+							<span>Subject</span>
+							<input id="id_subject" maxlength="120" name="subject" type="text" required />
+						</div>
+						<div>
+							<span>Your Message</span>
+							<textarea cols="40" id="id_message" name="message" rows="10" required>
+                             </textarea>
+						</div>
+						<input type="submit" value="SEND">
+                        </form>
+				</div>
+
+		</div>
+	</div>
+
+{% endblock %}
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}

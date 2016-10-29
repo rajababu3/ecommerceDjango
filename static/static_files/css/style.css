@@ -4,6 +4,8 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
+
+
 body{
 	background:#fff;
 	font-family: 'Lato', sans-serif;
@@ -2002,6 +2004,18 @@ a.forgot {
 .register input[type="text"]:hover {
 		border: 1px solid #ff5d56;
 }
+
+.register input[type="email"] {
+	border: 1px solid #000;
+	outline:none;
+	width: 120px;
+	font-size:0.9em;
+	padding:10px;
+}
+.register input[type="email"]:hover {
+		border: 1px solid #ff5d56;
+}
+
 .register  input[type="submit"] {
 	background: #ff5d56;
 	color:#fff;
@@ -3670,4 +3684,46 @@ ul.start li a i.next {
     color: #0f0f0f;
     line-height: 12px;
     margin-left: 10px;
+}
+
+.add-cart {
+    text-decoration: #2aabd2;
+    color: #fff;
+    background: #34495e;
+    padding: 0.4em 0.8em;
+    font-size: 1.15em;
+    text-transform: uppercase;
+    margin-top: 2em;
+    display: inline-block;
+}
+.headerSuccess{
+	background: url(../images/banner.jpg) no-repeat center;
+	width:100%;
+	background-size:cover;
+	min-height: 750px;
+	display: block;
+}
+
+
+.registerCustom input[type="email"] {
+	border: 1px solid #000;
+	outline:none;
+	width: 100%;
+	font-size:0.9em;
+	padding:10px;
+}
+.registerCustom input[type="email"]:hover {
+		border: 1px solid #ff5d56;
+}
+
+
+.registerCustom input[type="password"] {
+	border: 1px solid #000;
+	outline:none;
+	width: 100%;
+	font-size:0.9em;
+	padding:10px;
+}
+.registerCustom input[type="password"]:hover {
+		border: 1px solid #ff5d56;
 }

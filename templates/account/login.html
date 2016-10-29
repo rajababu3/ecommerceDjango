@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block navbarHome %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <h6 class="dress"><a href="{% url 'home' %}">Home</a> <i> </i> Register </h6>
+    </div>
+    <div class="back">
+        <h2>PRODUCTS</h2>
+    </div>
+    <div class="account_grid">
+			   <div class=" login-right">
+			  	<h3>REGISTERED CUSTOMERS</h3>
+				<p>If you have an account with us, please log in.</p>
+				<form method='POST' action=''>{% csrf_token %}
+				  <div>
+					<span>User Name</span>
+					<input id="id_username" name="username" type="text" required />
+				  </div>
+				  <div>
+					<span>Password</span>
+					<input id="id_password"  name="password" type="password" required  />
+				  </div>
+				  <a class="forgot" href="#">Forgot Your Password?</a>
+				  <input type="submit" value="Login">
+			    </form>
+			   </div>
+			    <div class=" login-left">
+			  	 <h3>NEW CUSTOMERS</h3>
+				 <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+				 <a class="acount-btn" href="{% url 'auth_register' %}">Create an Account</a>
+			   </div>
+
+			 </div>
+{% endblock %}
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}

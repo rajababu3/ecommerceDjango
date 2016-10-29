@@ -1,68 +1,95 @@
 {% extends 'base.html' %}
-<div class="page-header">
-    <h1>{{ product.title }}</h1>
-</div>
+{% load staticfiles %}
+{% block navbarHome %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
 {% block content %}
-<div class="col-md-4">
-    {% for img in images %}
-        {% if img.featured %}
-            <div class="col-xs-12">
-            <img class="img-responsive" src="{{ img.image.url }}"  />
-            <hr/>
-            </div>
-        {% endif %}
-    {% endfor %}
-        {% for img in images %}
-            {% if not img.featured %}
-        <div class="col-xs-6">
-            <a href="#" class="thumbnail">
-                <img class="img-responsive" src="{{ img.image.url }}" />
-            </a>
-        </div>
-            {% endif %}
-    {% endfor %}
+    <div class="container">
+	<h6 class="dress"><a href="{% url 'home' %}">Home</a> <i> </i> {{ product.title }} </h6>
+</div>
+<div class="back">
+	<h2>{{ product.title }}</h2>
+</div>
+    <!---->
+    <div class="product">
+        <div class="container">
+            <div class="col-md-12 product-price1">
+                <div class="col-md-5 single-top">
+                    {% for img in images %}
+                        {% if img.featured %}
+                            <div class="col-xs-12">
+                                <img class="img-responsive" src="{{ img.image.url }}"  />
+                                <hr/>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    {% for img in images %}
+                        {% if not img.featured %}
+                            <div class="col-xs-6">
+                                <a href="#" class="thumbnail">
+                                    <img class="img-responsive" src="{{ img.image.url }}" />
+                                </a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+					</div>
+					<div class="col-md-7 single-top-in simpleCart_shelfItem">
+						<div class="single-para ">
+						<h4>{{ product.title }}</h4>
+							<h5 class="item_price">₹ {{ product.price }}</h5>
+							<p>{{ product.description }}</p>
+							<div class="available">
+                                <form class='form-horizontal' method='POST' action='{% url "add_to_cart" product.slug %}'>
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2" for="qty">Qty:</label>
+                                        <div class="col-sm-10">
+                                            <input  class="form-control"  name='qty' type='number' value='1'/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                    {% if product.variation_set.all %}
+                                        <label class="control-label col-sm-2" for="size">Size:</label>
+                                        <div class="col-sm-10">
+
+                                                {% if product.variation_set.sizes %}
+                                                    <select class='form-control' name='size'>
+                                                {% for item in product.variation_set.sizes %}
+                                                    <option value='{{ item.title|lower }}'>{{ item.title|capfirst }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        {% endif %}
+                                        </div>
+                                    </div>
+                                                 <div class="form-group">
+                                                     <label class="control-label col-sm-2" for="color">Color:</label>
+                                                     <div class="col-sm-10">
+                                         {% if product.variation_set.colors %}
+                                            <select class='form-control' name='color'>
+                                                {% for item in product.variation_set.colors %}
+                                                    <option value='{{ item.title|lower }}'>{{ item.title|capfirst }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        {% endif %}
+                                                     </div>
+                                                 </div>
+
+                                    {% endif %}
+                                <input class='add-cart item_add' type='submit' value='Add to cart'/>
+                                </form>
+
+
+                            <div class="clearfix"> </div>
+						</div>
+						</div>
+					</div>
+				<div class="clearfix"> </div>
+			<!---->
     </div>
-<div class='col-sm-8'>
-		<div class='col-sm-8 pull-left'>
-            <h1 class="_3eAQiD"><!-- react-text: 29674 -->{{ product.title }}<!-- /react-text --></h1>
-		 </div>
-		 <div class='col-sm-4 pull-right'>
-			 	 <form class='form' method='POST' action='{% url "add_to_cart" product.slug %}'>
-                 {% csrf_token %}
-                     <input class='btn btn-submit btn-block' type='submit' value='Add to cart'/>
-			 	     <input  class="form-control"  name='qty' type='number' value='1'/>
-
-                {% if product.variation_set.all %}
-                    {% if product.variation_set.sizes %}
-                        <select class='form-control' name='size'>
-                        {% for item in product.variation_set.sizes %}
-			 		        <option value='{{ item.title|lower }}'>{{ item.title|capfirst }}</option>
-                        {% endfor %}
-			 	        </select>
-                     {% endif %}
-                    {% if product.variation_set.colors %}
-                        <select class='form-control' name='color'>
-                        {% for item in product.variation_set.colors %}
-			 		        <option value='{{ item.title|lower }}'>{{ item.title|capfirst }}</option>
-                        {% endfor %}
-			 	        </select>
-                     {% endif %}
-                {% endif %}
-
-			 </form>
-	 	</div>
-	 	<div class='col-sm-12'>
-			 <hr/>
-            <div class="price costprice">
-                ₹ {{ product.price }}
-            </div>
-			  <br/>
-
-			 Shipping: Free with $25+ purchase.
-			 <hr/>
-	 	</div>
-			 <div class='col-sm-12'>
-			{{ product.description|linebreaks }}
-             </div>
-	</div>
+    </div>
+    </div>
+{% endblock %}
+{% block footer %}
+    {% include 'footer.html' %}
 {% endblock %}

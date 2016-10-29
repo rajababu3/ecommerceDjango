@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block navbarHome %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <h6 class="dress"><a href="{% url 'home' %}">Home</a> <i> </i> Register </h6>
+    </div>
+    <div class="back">
+        <h2>PRODUCTS</h2>
+    </div>
+     <div class="container">
+		<div class="register">
+		<h3>PERSONAL INFORMATION</h3>
+		  	  <form method='POST' action=''>{% csrf_token %}
+					<div class="mation">
+					<div>
+						<span>User Name</span>
+						<input id="id_username" maxlength="150" name="username" type="text" required />
+                        <span class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span></p>
+					</div>
+					 <div>
+						 <span>Email Address</span>
+						 <input id="id_email" maxlength="254" name="email" type="text" />
+						 </div>
+						 <div>
+							<span>Password</span>
+								<input id="id_password1" name="password1" type="password" required />
+					</div>
+                        	 <div>
+							<span>Confirm Password</span>
+								<input id="id_password2" name="password2" type="password" required />
+					</div>
+					 </div>
+				     <input type="submit" value="Register">
+				</form>
+
+
+		   </div>
+			</div>
+{% endblock %}
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}

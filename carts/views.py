@@ -14,7 +14,15 @@ def view(request):
         cart = Cart.objects.get(id=the_id)
     except:
         the_id = None
+
     if the_id:
+        new_total = 0.00
+        for item in cart.cartitem_set.all():
+            line_total = float(item.product.price) * item.quantity
+            new_total += line_total
+        request.session['items_total'] = cart.cartitem_set.count()
+        cart.total = new_total
+        cart.save()
         context = {"cart": cart}
     else:
         empty_message = "Your Cart is Empty, please keep shopping."
@@ -22,6 +30,7 @@ def view(request):
 
     template = "cart/view.html"
     return render(request, template, context)
+
 
 def remove_from_cart(request, id):
     try:
@@ -77,7 +86,6 @@ def add_to_cart(request, slug):
         request.session['items_total'] = cart.cartitem_set.count()
         cart.total = new_total
         cart.save()
-        request.session['cart_total'] = Cart.objects.get(cart_total = cart.total)
         return HttpResponseRedirect(reverse("cart"))
 
     return HttpResponseRedirect(reverse("cart"))

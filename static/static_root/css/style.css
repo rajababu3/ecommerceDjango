@@ -4,6 +4,8 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
+
+
 body{
 	background:#fff;
 	font-family: 'Lato', sans-serif;
@@ -300,7 +302,7 @@ ul.support-right li i.tele{
 /* start icon styles */
 /*--- slider-css --*/
 
-.banner{	
+.banner{
 	text-align:right;
 	  float: right;
   width:44%;
@@ -951,15 +953,15 @@ span.price-in small{
 	float:left;
 }
 .logo-the{
-	float:right;
-	  width: 65%;
+		float: right;
+	  width: 85%;
 }
 .logo-the h4{
-		color:#000;
-		font-size: 1.5em;
-  font-family: 'Roboto Slab', serif;
-  font-weight: 600;
-  margin-bottom:0.3em ;
+		color: #231a1a;
+		font-size: 1.9em;
+  		font-family: 'Roboto Slab', serif;
+  		font-weight: 600;
+		margin-bottom:0.3em ;
 }
 .logo-the p{
 	color:#000;
@@ -2002,6 +2004,18 @@ a.forgot {
 .register input[type="text"]:hover {
 		border: 1px solid #ff5d56;
 }
+
+.register input[type="email"] {
+	border: 1px solid #000;
+	outline:none;
+	width: 120px;
+	font-size:0.9em;
+	padding:10px;
+}
+.register input[type="email"]:hover {
+		border: 1px solid #ff5d56;
+}
+
 .register  input[type="submit"] {
 	background: #ff5d56;
 	color:#fff;
@@ -2369,7 +2383,8 @@ a.add-cart {
 }
 @media(max-width:768px){
 .logo {
-  margin-top: 0em;
+  margin-top: 0.8em;
+	background-image: url("../images/logo (1).png");
 }
 .top-nav {
   width: 63%;
@@ -3657,4 +3672,58 @@ ul.start li a i {
 ul.start li a i.next {
   background-position:-126px -119px;
 }
+}
+
+.cartSpan{
+	border-radius: 3px;
+    background-color: #2aabd2;
+    height: 20px;
+    padding: 3px 6px;
+    font-weight: 500;
+    display: inline-block;
+    color: #0f0f0f;
+    line-height: 12px;
+    margin-left: 10px;
+}
+
+.add-cart {
+    text-decoration: #2aabd2;
+    color: #fff;
+    background: #34495e;
+    padding: 0.4em 0.8em;
+    font-size: 1.15em;
+    text-transform: uppercase;
+    margin-top: 2em;
+    display: inline-block;
+}
+.headerSuccess{
+	background: url(../images/banner.jpg) no-repeat center;
+	width:100%;
+	background-size:cover;
+	min-height: 750px;
+	display: block;
+}
+
+
+.registerCustom input[type="email"] {
+	border: 1px solid #000;
+	outline:none;
+	width: 100%;
+	font-size:0.9em;
+	padding:10px;
+}
+.registerCustom input[type="email"]:hover {
+		border: 1px solid #ff5d56;
+}
+
+
+.registerCustom input[type="password"] {
+	border: 1px solid #000;
+	outline:none;
+	width: 100%;
+	font-size:0.9em;
+	padding:10px;
+}
+.registerCustom input[type="password"]:hover {
+		border: 1px solid #ff5d56;
 }

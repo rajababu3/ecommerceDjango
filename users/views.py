@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponseRedirect, reverse,Http404
 from django.contrib.auth import login,logout,authenticate
-from .forms import LoginForm, RegistrationForm,UserAddressForm
+from .forms import LoginForm, RegistrationForm,UserAddressForm, UserContactForm
 from django.contrib import messages
 # Create your views here.
 
@@ -13,37 +13,51 @@ def logout_view(request):
     return HttpResponseRedirect('%s' % (reverse("auth_login")))
 
 def login_view(request):
-    form = LoginForm(request.POST or None)
-    btn = "Login"
-    if form.is_valid():
-        username = form.cleaned_data['username']
-        password = form.cleaned_data['password']
+    loginForm = LoginForm(request.POST or None)
+    # btn = "Login"
+    if loginForm.is_valid():
+        username = loginForm.cleaned_data['username']
+        password = loginForm.cleaned_data['password']
         user = authenticate(username=username, password=password)
         login(request, user)
         messages.success(request, "Successfully Logged In. Welcome Back!")
         return HttpResponseRedirect("/")
     context = {
-        "form": form,
-        "submit_btn": btn,
+        "loginForm": loginForm,
+        # "submit_btn": btn,
     }
-    return render(request, "forms.html", context)
+    return render(request, "account/login.html", context)
 
 
 def registration_view(request):
-    form = RegistrationForm(request.POST or None)
-    btn = "Join"
-    if form.is_valid():
-        new_user = form.save(commit=False)
+    registerForm = RegistrationForm(request.POST or None)
+    # btn = "Join"
+    if registerForm.is_valid():
+        new_user = registerForm.save(commit=False)
+        new_user.save()
+        messages.success(request, "Successfully Registered.")
+        return HttpResponseRedirect("/")
+
+    context={
+        "registerForm": registerForm,
+        # "submit_btn": btn,
+    }
+    return render(request, "account/register.html", context)
+
+def contact_view(request):
+    contactForm = UserContactForm(request.POST or None)
+    # btn = "Join"
+    if contactForm.is_valid():
+        new_user = contactForm.save(commit=False)
         new_user.save()
         messages.success(request, "Successfully Registered.")
         return HttpResponseRedirect("/")
 
     context = {
-        "form": form,
-        "submit_btn": btn,
+        "contactForm": contactForm,
+        # "submit_btn": btn,
     }
-    return render(request, "forms.html", context)
-
+    return render(request, "contact.html", context)
 
 def add_user_address(request):
 
