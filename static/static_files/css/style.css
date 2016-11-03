@@ -3727,3 +3727,11 @@ ul.start li a i.next {
 .registerCustom input[type="password"]:hover {
 		border: 1px solid #ff5d56;
 }
+
+.background_img_thumb{
+	width:250px;
+	background-image:url('../img/download.svg');
+	background-size: auto;
+	background-repeat:no-repeat;
+	background-position:center;
+}

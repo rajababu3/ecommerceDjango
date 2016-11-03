@@ -70,3 +70,8 @@ def add_user_address(request):
         "form": form
     }
     return render(request, "orders/shipping.html", context)
+
+def thankyou_view(request):
+    template = 'account/thankyou.html'
+    context = {}
+    return render(request,template, context)

@@ -75,6 +75,7 @@ def add_to_cart(request, slug):
             except:
                 pass
         cart_item = CartItem.objects.create(cart=cart, product=product)
+
         if len(product_var) > 0:
             cart_item.variations.add(*product_var)
         cart_item.quantity = qty

@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'', include('carts.urls')),
     url(r'', include('orders.urls')),
     url(r'', include('users.urls')),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

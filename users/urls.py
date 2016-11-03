@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^users/register/$', views.registration_view, name='auth_register'),
     url(r'^users/contact/$', views.contact_view, name='contact'),
     url(r'^users/address/shipping/$', views.add_user_address, name='shipping_address'),
+    url(r'^users/thankyou/$', views.thankyou_view, name='thankyou'),
 ]

@@ -3,19 +3,39 @@
 		<div class="container">
 			<div class="col-md-6 footer-top">
 				<h3>QUICK CONTACT</h3>
-				<form>
-
-						<input type="text" value="ENTER YOUR NAME*" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='ENTER YOUR NAME*';}">
-
-						<input type="text" value="ENTER YOUR EMAIL*" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='ENTER YOUR EMAIL*';}">
-
-						<input type="text" value="ENTER YOUR PHONE" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='ENTER YOUR PHONE';}">
-
-						<textarea cols="77" rows="6" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'ENTER YOUR MESSAGE*';}">ENTER YOUR MESSAGE*</textarea>
-
-							<input type="submit" value="SEND MESSAGE">
-
-					</form>
+{#				<form>#}
+{##}
+{#						<input type="text" value="ENTER YOUR NAME*" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='ENTER YOUR NAME*';}">#}
+{##}
+{#						<input type="text" value="ENTER YOUR EMAIL*" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='ENTER YOUR EMAIL*';}">#}
+{##}
+{#						<input type="text" value="ENTER YOUR PHONE" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='ENTER YOUR PHONE';}">#}
+{##}
+{#						<textarea cols="77" rows="6" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value = 'ENTER YOUR MESSAGE*';}">ENTER YOUR MESSAGE*</textarea>#}
+{##}
+{#							<input type="submit" value="SEND MESSAGE">#}
+{##}
+{#					</form>#}
+                <form method='POST' action='{% url 'thankyou' %}'>{% csrf_token %}
+						<div>
+							<span>Your Name </span>
+							<input id="id_name" maxlength="120" name="name" type="text" required />
+						</div>
+						<div>
+							<span>Your Email </span>
+							<input id="id_email" maxlength="254" name="email" type="text" required />
+						</div>
+						<div>
+							<span>Subject</span>
+							<input id="id_subject" maxlength="120" name="subject" type="text" required />
+						</div>
+						<div>
+							<span>Your Message</span>
+							<textarea cols="40" id="id_message" name="message" rows="10" required>
+                             </textarea>
+						</div>
+						<input type="submit" value="SEND">
+                        </form>
 
 			</div>
 			<div class="col-md-6 footer-bottom">
