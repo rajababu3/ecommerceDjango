@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block navbarHome %}
+    {% include 'navbar.html' %}
+{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+{#        {{ user.order_set.all }} <br/>#}
+
+    <div class="col-md-12">
+           <h2>=====>     <i>{{ user.username }}'s Orders</i></h2>
+    <hr/>
+    <div class="col-md-8">
+    {% for order in orders %}
+        {% if user.is_authenticated %}
+            <button type="button" class="btn btn-primary btn-lg">{{ order.order_id }}</button>
+            <div class="col-sm-offset-2">
+{#                <h3><b>Order Title: </b> <a href="{{ order.product.get_absolute_url }}">{{ order.cart.cartitem.product.title}}</a>  </h3>#}
+             <h3><b>Order Total: </b> {{ order.cart.total }}  </h3>
+            </div>
+
+        {% endif %}
+        <hr/>
+        {% cycle " "  "</div><div class='col-md-8'>" %}
+    {% endfor %}
+    </div>
+    </div>
+{% endif %}
+{% endblock %}
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}

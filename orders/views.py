@@ -1,6 +1,6 @@
 import time
-
 from django.core.urlresolvers import reverse
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, HttpResponseRedirect
 from carts.models import Cart
@@ -14,6 +14,7 @@ def checkout(request):
         cart = Cart.objects.get(id=the_id)
     except:
         the_id = None
+        # return HttpResponseRedirect("/cart/")
         return HttpResponseRedirect(reverse("cart"))
 
     try:
@@ -24,11 +25,15 @@ def checkout(request):
         new_order.user = request.user
         new_order.order_id = str(time.time())
         new_order.save()
-
-
     except:
         new_order = None
+        # work on some error message
         return HttpResponseRedirect(reverse("cart"))
+    final_amount = 0
+    if new_order is not None:
+        new_order.sub_total = cart.total
+        new_order.save()
+        final_amount = new_order.get_final_amount()
 
     address_form = UserAddressForm(request.POST or None)
     if address_form.is_valid():
@@ -54,4 +59,11 @@ def checkout(request):
 def success(request):
     context = {}
     template = "orders/success.html"
+    return render(request, template, context)
+
+@login_required()
+def user_order(request, user):
+    orders = Order.objects.filter(user = user)
+    context = {"orders": orders}
+    template = "orders/userOrder.html"
     return render(request, template, context)

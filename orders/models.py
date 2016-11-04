@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
-from carts.models import Cart
+from carts.models import Cart, CartItem
+from products.models import Product
 
 STATUS_CHOICES = (
     ("Started", "Started"),
