@@ -1,5 +1,6 @@
 from django.core.urlresolvers import reverse
 from django.db import models
+from django_extensions.db.models import TitleSlugDescriptionModel
 
 class Category(models.Model):
     categoryName = models.CharField(max_length=50, unique=True)

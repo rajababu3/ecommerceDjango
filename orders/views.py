@@ -1,10 +1,9 @@
 import time
 from django.core.urlresolvers import reverse
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, Http404
 from carts.models import Cart
-from .models import Order
+from .models import Order, Tracking
 from users.forms import UserAddressForm
 
 @login_required()
@@ -19,6 +18,7 @@ def checkout(request):
 
     try:
         new_order = Order.objects.get(cart=cart)
+
     except Order.DoesNotExist:
         new_order = Order()
         new_order.cart = cart
@@ -34,6 +34,7 @@ def checkout(request):
         new_order.sub_total = cart.total
         new_order.save()
         final_amount = new_order.get_final_amount()
+
 
     address_form = UserAddressForm(request.POST or None)
     if address_form.is_valid():
@@ -67,3 +68,17 @@ def user_order(request, user):
     context = {"orders": orders}
     template = "orders/userOrder.html"
     return render(request, template, context)
+
+def orderProcess(request):
+    context = {}
+    template = "orders/orderProcess.html"
+    return render(request, template, context)
+
+def track(request, order_id):
+    try:
+        order_track = Tracking.objects.get(order_id = order_id)
+        context = {"order_track": order_track}
+        template = "orders/tracking.html"
+        return render(request, template, context)
+    except:
+        return HttpResponseRedirect(reverse('orderProcess'))

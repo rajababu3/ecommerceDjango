@@ -6,25 +6,51 @@
 
 {% if user.is_authenticated %}
 {#        {{ user.order_set.all }} <br/>#}
-
-    <div class="col-md-12">
-           <h2>=====>     <i>{{ user.username }}'s Orders</i></h2>
-    <hr/>
-    <div class="col-md-8">
-    {% for order in orders %}
-        {% if user.is_authenticated %}
-            <button type="button" class="btn btn-primary btn-lg">{{ order.order_id }}</button>
-            <div class="col-sm-offset-2">
+{##}
+{#    <div class="col-md-12">#}
+{#           <h2>=====>     <i>{{ user.username }}'s Orders</i></h2>#}
+{#    <hr/>#}
+{#    <div class="col-md-8">#}
+{#    {% for order in orders %}#}
+{#        {% if user.is_authenticated %}#}
+{#            <button type="button" class="btn btn-primary btn-lg">{{ order.order_id }}</button>#}
+{#            <div class="col-sm-offset-2">#}
 {#                <h3><b>Order Title: </b> <a href="{{ order.product.get_absolute_url }}">{{ order.cart.cartitem.product.title}}</a>  </h3>#}
-             <h3><b>Order Total: </b> {{ order.cart.total }}  </h3>
-            </div>
+{#             <h3><b>Order Total: </b> {{ order.cart.total }}  </h3>#}
+{#            </div>#}
+{##}
+{#        {% endif %}#}
+{#        <hr/>#}
+{#        {% cycle " "  "</div><div class='col-md-8'>" %}#}
+{#    {% endfor %}#}
+{#    </div>#}
+{#    </div>#}
 
-        {% endif %}
-        <hr/>
-        {% cycle " "  "</div><div class='col-md-8'>" %}
-    {% endfor %}
-    </div>
-    </div>
+    <div class=" cart-items">
+			 <h3>User: {{ user.username }}</h3>
+				  <div class="in-check">
+		  <ul class="unit">
+              <li><span>Order ID</span></li>
+			<li><span>Order Total</span></li>
+			<li><span>Tracking</span></li>
+			<li> </li>
+			<div class="clearfix"> </div>
+		  </ul>
+		  <ul class="cart-header">
+               {% for order in orders %}
+        {% if user.is_authenticated %}
+            <li> <a href="#" class="add-cart cart-check">{{ order.order_id}}</a></li>
+			<li><span>{{ order.cart.total }}</span></li>
+            <li> <a href="{% url 'orderTracking' order.id %}?orderid={{ order.order_id }}" class="add-cart cart-check">Track Order</a></li>
+
+			<div class="clearfix"> </div>
+              {% endif %}
+          {% cycle " "  "</ul><ul class='cart-header'>" %}
+          {% endfor %}
+			</ul>
+
+		</div>
+			 </div>
 {% endif %}
 {% endblock %}
 

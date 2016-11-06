@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block navbarHome %}
+    {% include 'navbar.html' %}
+{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+    <div class=" cart-items">
+			 <h3>User: {{ user.username }}</h3>
+{% endif %}
+				  <div class="in-check">
+		  <ul class="unit">
+              <li><span>Order ID</span></li>
+              <li><span>Order Status</span></li>
+			<li><span>Current Place</span></li>
+              <li><span>User Place</span></li>
+			<li> </li>
+			<div class="clearfix"> </div>
+		  </ul>
+		  <ul class="cart-header">
+
+            <li> <a href="#" class="add-cart cart-check">{{ order_track.order.order_id}}</a></li>
+			<li><span>{{ order_track.shipped }}</span></li>
+            <li><span>{{ order_track.place1 }}</span></li>
+            <li><span>{{ order_track.place3 }}</span></li>
+			<div class="clearfix"> </div> <hr/>
+          <hr/>
+          <hr/>
+			</ul>
+            <div class="clearfix"> </div>
+                  <div class="clearfix"> </div>
+
+		</div>
+			 </div>
+
+{% endblock %}
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}

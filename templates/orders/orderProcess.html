@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block navbarHome %}
+    {% include 'navbar.html' %}
+{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+    <div class=" cart-items">
+			 <h3>User: {{ user.username }}</h3>
+{% endif %}
+				  <div class="in-check">
+		  <ul class="unit">
+              <li><span>Order ID</span></li>
+              <li><span>Order Status</span></li>
+			<li><span>Current Place</span></li>
+              <li><span>User Place</span></li>
+			<li> </li>
+			<div class="clearfix"> </div>
+		  </ul>
+		  <ul class="cart-header">
+              <div class="container">
+                  <h2>Your Order is Being Processed, Please check After some time</h2>
+              </div>
+			<div class="clearfix"> </div> <hr/>
+          <hr/>
+          <hr/>
+			</ul>
+            <div class="clearfix"> </div>
+                  <div class="clearfix"> </div>
+
+		</div>
+			 </div>
+
+{% endblock %}
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}

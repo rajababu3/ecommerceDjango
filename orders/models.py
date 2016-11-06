@@ -33,3 +33,19 @@ class Order(models.Model):
         instance.save()
         return instance.final_total
 
+
+SHIPPING_CHOICES = (
+    ("Received", "Received"),
+    ("Shipped", "Shipped"),
+    ("Delivered", "Delivered"),
+)
+class Tracking(models.Model):
+    order = models.ForeignKey(Order)
+    shipped = models.CharField(max_length=120, choices=SHIPPING_CHOICES, default="Received")
+    place1 = models.CharField(max_length=120, null=True, blank=True)
+    place3 = models.CharField(max_length=120, null=True, blank=True)
+    place4 = models.CharField(max_length=120, null=True, blank=True)
+    place5 = models.CharField(max_length=120, null=True, blank=True)
+
+    def __str__(self):
+        return self.order.order_id

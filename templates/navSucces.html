@@ -10,6 +10,7 @@
                 {% if user.is_authenticated %}
 				<ul class=" support-right">
 					<li ><a href="{% url 'products' %}">Hey, {{ request.user.username }}</a></li>
+                    <li ><a href="{% url 'userOrder' user.id %}?user.username">My Order</a></li>
 					<li ><a href="{% url 'auth_logout' %}">Logout</a></li>
 				</ul>
                 {% else %}
