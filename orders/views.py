@@ -55,7 +55,7 @@ def checkout(request):
     }
     template = "orders/success.html"
     return render(request, template, context)
-
+@login_required()
 def success(request):
     context = {}
     template = "orders/success.html"

@@ -26,6 +26,9 @@ urlpatterns = [
     url(r'', include('users.urls')),
 
 ]
+
+admin.site.site_header = 'E-Shopper Admin'
+admin.site.site_title = 'E-Shopper'
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
