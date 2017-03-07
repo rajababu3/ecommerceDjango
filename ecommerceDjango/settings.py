@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'orders',
     'users',
     'django_extensions',
+    'recommends.storages.djangoorm',
+    'recommends',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +134,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static', 'static_root')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static', 'static_files'),
 )
+

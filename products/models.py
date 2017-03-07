@@ -20,11 +20,12 @@ class Product(models.Model):
     active = models.BooleanField(default=True)
 
     class Meta:
-        unique_together = ('title', 'slug')
+        ordering = ('title',)
+        index_together = (('id', 'slug'),)
 
 
     def get_absolute_url(self):
-        return reverse('single-product', kwargs={"slug": self.slug})
+        return reverse('product_detail', kwargs={"id":self.id, "slug": self.slug})
     def __str__(self):
         return str(self.title)
 

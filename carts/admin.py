@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Cart, CartItem
+from .models import CartItem, Cart
 class CartAdmin(admin.ModelAdmin):
     class Meta:
         model = Cart

@@ -1,8 +1,9 @@
-from django.shortcuts import render, Http404
+from django.shortcuts import render, Http404, get_object_or_404
 
 # Create your views here.
 
 from .models import Product,ProductImage
+
 
 def search(request):
     try:
@@ -41,4 +42,3 @@ def single(request, slug):
         return render(request, template, context)
     except :
         raise Http404
-
