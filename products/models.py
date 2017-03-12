@@ -1,17 +1,13 @@
 from django.core.urlresolvers import reverse
 from django.db import models
+from django.contrib.sites.models import Site
+from django.contrib.auth.models import User
 from django_extensions.db.models import TitleSlugDescriptionModel
 
-class Category(models.Model):
-    categoryName = models.CharField(max_length=50, unique=True)
-
-    def __str__(self):
-        return self.categoryName
-
 class Product(models.Model):
-    category = models.ForeignKey(Category, default=1)
-    title = models.CharField(max_length=250)
-    description = models.TextField(max_length=300)
+    title = models.CharField(max_length=500)
+    sites = models.ManyToManyField(Site)
+    description = models.TextField(max_length=1000)
     price = models.DecimalField(decimal_places=2, max_digits=100)
     sale_price = models.DecimalField(decimal_places=2, max_digits=100, default=0.0, null=True, blank=True)
     slug = models.SlugField(unique=True)
@@ -26,8 +22,25 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse('product_detail', kwargs={"id":self.id, "slug": self.slug})
+
+    def sites_str(self):
+        return ', '.join([s.name for s in self.sites.all()])
+
+    sites_str.short_description = 'sites'
+
     def __str__(self):
         return str(self.title)
+
+class Vote(models.Model):
+    """A Vote on a Product"""
+    user = models.ForeignKey(User, related_name='votes')
+    product = models.ForeignKey(Product)
+    site = models.ForeignKey(Site)
+    score = models.FloatField()
+
+    def __str__(self):
+        return "Vote"
+
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product)

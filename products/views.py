@@ -33,9 +33,9 @@ def all(request):
 
     return render(request, template, context)
 
-def single(request, slug):
+def single(request, id, slug):
     try:
-        product = Product.objects.get(slug = slug)
+        product = Product.objects.get(id = id, slug = slug)
         images = ProductImage.objects.filter(product = product)
         context = {"product": product, "images": images}
         template = 'products/single.html'

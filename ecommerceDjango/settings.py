@@ -35,15 +35,13 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'products',
     'carts',
     'orders',
     'users',
-    'django_extensions',
-    'recommends.storages.djangoorm',
-    'recommends',
 ]
 
 MIDDLEWARE = [
@@ -134,4 +132,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static', 'static_root')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static', 'static_files'),
 )
-
+SITE_ID = 1
