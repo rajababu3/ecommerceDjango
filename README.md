@@ -1,6 +1,4 @@
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/QKd5T28ZRw8KGHZvrF144kX9/rajababu3/ecommerceDjango'>
-  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/QKd5T28ZRw8KGHZvrF144kX9/rajababu3/ecommerceDjango.svg' />
-</a>
+
 
 # E-Shopper
 ### I am happy to announce that my website is live on heroku:: https://edjango.herokuapp.com
